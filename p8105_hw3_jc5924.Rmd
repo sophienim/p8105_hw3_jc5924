@@ -100,7 +100,7 @@ accel_df=read_csv("./data/accel_data.csv",show_col_types = FALSE) %>%
     activity_1:activity_1440,
     names_to="minute",
     names_prefix="activity_",
-    values_to="activity Count",
+    values_to="activity count",
   ) %>%
     mutate(
       weekday_vs_weekend=ifelse(day %in% c("Saturday", "Sunday"), "weekend", "weekday"),
@@ -109,6 +109,8 @@ accel_df=read_csv("./data/accel_data.csv",show_col_types = FALSE) %>%
       )
 accel_df
 ```
+### Describe the resultings
+* There are total of `r ncol(accel_df)` key variables in this dataset that are `r names(accel_df)`. And there are total of `r nrow(accel_df)` observations. In this dataframe, variables activity are the activity counts for each minute of a 24-hour day starting at midnight.
 
 
 
