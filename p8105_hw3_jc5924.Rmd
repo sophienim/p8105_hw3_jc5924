@@ -129,7 +129,27 @@ accel_df %>%
 ### Are there any trends?
 * There are a few trends that can be observed that patients' activity level remains fairly stable for the first three weeks, and for week 4 and week 5, the total activity count drops during the weekends. 
 
-### 
+### Single panel plot
+```{r}
+accel_df %>% 
+  janitor::clean_names() %>% 
+  group_by(day,minute) %>% 
+  ggplot(aes(x = minute/60,y =activity_count,color = day)) + 
+  geom_point(alpha = .5) +
+  geom_smooth(se = FALSE)+
+  labs(
+    x = "Hour",
+    y = "Activity Counts",
+    title = "24-hour activity time courses for each day")+
+  scale_x_continuous(
+    limits = c(0, 24))
+```
+
+### Describe the pattern
+* We can see generally from Monday to Sunday, there are not many of activity count toward 00:00am to 6:00am and the most fluctuations occur between 7:00am to 24:00pm. There are two peaks when time are around 8:00am to 15:00pm and 18:00pm to 24:00pm. Plus, we can tell from the plot that from Friday to Sunday, patients tend to be more active than during weekdays.
+
+
+
 
 
 
