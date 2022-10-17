@@ -126,6 +126,11 @@ accel_df %>%
   knitr::kable()
 ```
 
+### Are there any trends?
+* There are a few trends that can be observed that patients' activity level remains fairly stable for the first three weeks, and for week 4 and week 5, the total activity count drops during the weekends. 
+
+### 
+
 
 
 
