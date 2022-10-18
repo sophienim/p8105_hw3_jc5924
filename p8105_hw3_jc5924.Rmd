@@ -226,6 +226,11 @@ snowfall=noaa_df %>%
 snowfall
 ```
 
+```{r}
+tmaxVtmin+snowfall
+```
+
+* We can see from the tmax VS tmin plot that large amount of data are clustered between -20C to 20C that there are several extreme temperatures too. And in the snowfall plot, we can tell that the fluctuations of snowfall values are basically the same throughout the years.
 
 
 
