@@ -159,6 +159,28 @@ ny_noaa
 * In this dataset, there are `r ncol(ny_noaa)` key variable that are `r names(ny_noaa)` and there are total of `r nrow(ny_noaa)` of observations. Plus, there is an issue with missing data that `prcp` has `r sum(is.na(ny_noaa$prcp))` missing values; `snow` has `r sum(is.na(ny_noaa$snow))` missing values; `snwd` has `r sum(is.na(ny_noaa$snwd))` missing values; `tmax` has `r sum(is.na(ny_noaa$tmax))` missing values and `tmin` has `r sum(is.na(ny_noaa$tmin))` missing values.
 
 ### Tidy, create variables and units
+```{r}
+ny_noaa %>% 
+  janitor::clean_names() %>% 
+  separate(date,into = c("year","month","day")) %>%
+  mutate(year=as.integer(year),
+         month=month.name[as.numeric(month)],
+         day=as.numeric(day),
+         prcp=as.numeric(prcp)/10,
+         tmax=as.numeric(tmax)/10,
+         tmin=as.numeric(tmin)/10)
+ny_noaa
+```
+### Snowfalls
+```{r}
+ny_noaa %>% 
+  janitor::clean_names() %>% 
+  group_by(snow) %>%
+  summarize(observed_value=n()) %>% 
+  arrange(desc(observed_value))
+```
+* The most commonly observed data is 0 meaning that most of the time, there appears to be no snow in NY. And there are also large number of observed value of missing data for NA.
+
 
 
 
